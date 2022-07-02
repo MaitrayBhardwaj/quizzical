@@ -1,13 +1,131 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Kantumruy Pro', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+	height: 100vh;
+	background-color: #293264;
+	display: flex;
+	align-items: center;
+	padding: 1em;
+	overflow-x: hidden;
+	justify-content: center;
+}
+
+#root{
+	width: 80%;
+}
+
+.app{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.questions{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.splash-screen{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #293264;
+	background-color: white;
+	padding: 2em 5em;
+	border-radius: 10px;
+}
+
+.selectedChoice{
+	background-color: #DDD;
+	border-color: #DDD !important;
+}
+
+.splash-screen .title{
+	font-size: 2.5em;
+}
+
+.splash-screen > * {
+	margin: 1em 0;
+}
+
+.questionnaire{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f5f7fb;
+	padding: 1em;
+}
+
+.btn{
+	background-color: #293264;
+	color: white;
+	padding: 1em 2em;
+	border: 0;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+.choices{
+	display: flex;
+	margin-top: 1em;
+}
+
+.question{
+	border-bottom: 1px solid #293264;
+	padding: 1em;
+	width: 95%;
+}
+
+.question-text{
+	color: #293264;
+	font-size: 1.25em;
+	font-weight: bolder;
+}
+
+.correctChoice{
+	background-color: #94D7A2;
+}
+
+.wrongChoice{
+	background-color: #F6D9DB;
+}
+
+.unselectedChoice{
+	color: #DDD !important;
+	background-color: white;
+	cursor: default !important;
+	border-color: #DDD !important;
+}
+
+.choice{
+	border-radius: 20px;
+	color: #4D5B9E;
+	border: 2px solid #4D5B9E;
+	padding: 0.5em 1em;
+	margin-right: 1em;
+	font-size: 0.9em;
+	cursor: pointer;
+	font-weight: bold;
+	transition: all 0.25s ease;
+}
+
+.scoring{
+	display: flex;
+	align-items: center;
+	margin-top: 1em;
+}
+
+.totalScore{
+	font-size: 1.5em;
+	color: #293264;
+	font-weight: bold;
+	margin-right: 2em;
 }

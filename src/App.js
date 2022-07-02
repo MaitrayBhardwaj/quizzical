@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import SplashScreen from './components/SplashScreen'
+import Questionnaire from './components/Questionnaire'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [hasStarted, setHasStarted] = useState(false)
+
+	const startQuiz = () => {
+		setHasStarted(true)
+	}
+
+	return (
+		<div className="app">
+			{ !hasStarted ? <SplashScreen startQuiz={startQuiz} /> : <Questionnaire />}
+		</div>
+	)
 }
 
-export default App;
+export default App
