@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Confetti from 'react-confetti'
+
 import Question from './Question'
+import Spinner from './Spinner'
 
 function Questionnaire() {
 	const [questions, setQuestions] = useState([])
 	const [score, setScore] = useState(0)
 	const [isCompleted, setIsCompleted] = useState(false)
+	const [hasLoaded, setHasLoaded] = useState(false)
 
 	const getQuestions = () => {
+		setHasLoaded(false)
 		axios.get('https://opentdb.com/api.php?amount=5&category=31&type=multiple')
 			.then(res => {
 				const reqQuestions = res.data.results
@@ -21,6 +25,7 @@ function Questionnaire() {
 						}
 					})
 				})
+				setHasLoaded(true)
 			})
 	}
 
@@ -54,16 +59,20 @@ function Questionnaire() {
 	}
 
 	const resetQuiz = async () => {
-		await getQuestions()
+		getQuestions()
 		setIsCompleted(false)
 	}
 
 	return (
 		<div className="questionnaire">
-			{ isCompleted && <Confetti />}
-			<div className="questions">
-				{questionElements}
-			</div>
+			{ isCompleted && <Confetti /> }
+			{
+				hasLoaded ? 
+				<div className="questions">
+					{questionElements}
+				</div> :
+				<Spinner />
+			}
 			<div className="scoring">
 				{ isCompleted && <p className="totalScore">You scored {score}/5!</p> }
 				<button className="btn" onClick={isCompleted ? resetQuiz : evaluateResult}>
